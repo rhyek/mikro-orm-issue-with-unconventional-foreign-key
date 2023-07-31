@@ -1,17 +1,14 @@
-import { Entity, OneToOne, PrimaryKey, Property } from '@mikro-orm/core';
+import { Entity, OneToOne, PrimaryKeyType, Property } from '@mikro-orm/core';
 import { Person } from './person';
 
 @Entity()
 export class PersonDetail {
-  @PrimaryKey({ columnType: 'bigint' })
-  id!: number;
+  [PrimaryKeyType]?: number;
 
   @OneToOne({
     entity: () => Person,
-    joinColumn: 'id',
-    mappedBy: 'detail',
-    owner: true,
-    persist: false,
+    fieldName: 'id',
+    primary: true,
   })
   person!: Person;
 

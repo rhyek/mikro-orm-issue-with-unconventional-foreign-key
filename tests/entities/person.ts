@@ -9,13 +9,6 @@ export class Person {
   @Property()
   name!: string;
 
-  @OneToOne({
-    entity: () => PersonDetail,
-    joinColumn: 'id',
-    mappedBy: 'person',
-    owner: false,
-    persist: false,
-    nullable: true,
-  })
+  @OneToOne(() => PersonDetail, (detail) => detail.person)
   detail?: PersonDetail;
 }
