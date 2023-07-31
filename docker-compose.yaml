@@ -1,0 +1,10 @@
+services:
+  mysql:
+    image: biarms/mysql:5.7
+    environment:
+      - MYSQL_ROOT_PASSWORD=test
+      - MYSQL_DATABASE=mikro_orm_test
+    ports:
+      - '3306:3306'
+    volumes:
+      - './seed.sql:/docker-entrypoint-initdb.d/seed.sql'
